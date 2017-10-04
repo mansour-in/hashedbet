@@ -122,7 +122,8 @@ UsersApiClient.prototype.register = function(req) {
         companyName: access(req, "body.companyName"),
         adminName: access(req, "body.adminName"),
         email: access(req, "body.email"),
-        password: access(req, "body.password")
+        password: access(req, "body.password"),
+        ethereumAddress: access(req, "body.ethereumAddress")
     });
 };
 

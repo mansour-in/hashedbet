@@ -1,7 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const userApiClient = require('../ApiClient').chatbotUsersApiClient;
-const User = require('../models/User');
+const userApiClient = require('../ApiClient').usersApiClient;
 
 function decorateUserResponse(user, done) {
   return done(null, user);

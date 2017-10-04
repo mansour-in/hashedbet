@@ -22,6 +22,25 @@
        margin-top: 10px;
    }
    
+
+   #register-modal .modal-dialog {
+    width: 350px;
+}
+
+#register-modal input[type=text], input[type=password] {
+    margin-top: 10px;
+}
+
+
+#participate-modal .modal-dialog {
+    width: 350px;
+}
+
+#participate-modal input[type=text], input[type=password] {
+    margin-top: 10px;
+}
+
+
    #div-login-msg,
    #div-lost-msg,
    #div-register-msg {

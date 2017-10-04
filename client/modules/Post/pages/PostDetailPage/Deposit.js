@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import {getUserData} from '../../PostReducer';
-import TermsandConditions from './TermsandConditions';
+import CountryAgreement from './CountryAgreement';
 import Receipt from './ReceiptPage';
 
 export class Deposit extends Component {
@@ -33,30 +33,52 @@ export class Deposit extends Component {
   render() {
     return(
       <div>
-          <div>
             {this.state.showDeposit && 
               <div>
-                  <p> Deposit Page </p>
-                  <input type="button" value="Previous" onClick={this.showTerms} />
-                  <input type="button" value="Get Receipt" onClick={this.getReceipts} />
+              <nav className="header bg-header transparent-light minimized dark" data-pages="header" data-pages-header="autoresize" data-pages-resize-class="dark">
+              <div className="container relative">
+                <div className="text-center">
+                  <div className="header-inner">
+                    <img src="/assets/images/logo_white.png" />
+                    <a href="/logout"><button type="button" className="pull-right btn btn-primary logout">Logout</button></a>
+                   </div>
+                  </div>
+                </div>
+              </nav>
+              
+            <section className="mobile-wrapper full-width border-radius-none">
+                <div className="inner full-height">
+                  <div className="container-xs-height full-height">
+                    <div className="col-xs-height col-middle text-left">
+                      <div className="container">
+                      <div className="row">
+                      <div className="col-md-12 m-t-5 m-b-5 p-t-5">
+                      <div className="col-md-12 text-center ">
+                       <h5>CoinBet Ethereum Address</h5> 
+                       <br/>
+                       <img className="card-img-top" src="/assets/images/qr.png" alt="Card image cap" />
+                       <br/>
+                       <br/>
+                      <input type="text" className="countdown form-control form-control-success ethereum-address" id="ethereum-address"  placeholder="0x9473BC8BB575Ffc15CB2179cd9398Bdf5730BF55" value="0x9473BC8BB575Ffc15CB2179cd9398Bdf5730BF55" />
+                      <br />
+                      <br />
+                      <button type="button" className="btn btn-primary " onClick={this.showTerms.bind(this)}>Back</button>
+                      </div> 
+                      </div>    
+                      
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
               </div>
             }
-          </div>
-          <div>
-            {this.state.showReceipt && 
-              <div>
-                <Receipt />
-              </div>
+            {this.state.showTermsandConditions &&
+              <CountryAgreement />
             }
+            
           </div>
-          <div>
-            {this.state.showTermsandConditions && 
-              <div>
-                <TermsandConditions />
-              </div>
-            }
-          </div>
-      </div>
     )
   }
 }

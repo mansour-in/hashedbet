@@ -76,6 +76,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "react-select": "1.0.0-rc.5",
+    "react-simple-countdown": "^1.2.1",
     "recharts": "^0.20.8",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",

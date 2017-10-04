@@ -14,7 +14,7 @@ exports.validateSession = function(req, res, next) {
     if(_.get(req, 'cookies.clever', null)) {
         decrypt.decodeToken(access(req, 'user.data.token'))
             .then((user) => {
-                res.redirect('/chatbots/'+ user.clientId);
+                res.redirect('/dashboard');
                 return;
             });
     } else {

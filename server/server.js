@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // React And Redux Setup
 import { configureStore } from '../client/store';
-import { setUser, setClientId, setBotId } from '../client/modules/App/AppActions';
+import { setUser } from '../client/modules/Post/PostActions';
 import { Provider } from 'react-redux';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -137,7 +137,9 @@ app.get('/bot', (req, res) => {
         error: false
     });
 });
-
+app.get('/faq', (req,res) => {
+    res.render('pages/faq');
+})
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
     const head = Helmet.rewind();
@@ -159,10 +161,11 @@ const renderFullPage = (html, initialState) => {
         ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-        <link href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="/assets/css/pages-icons.css" rel="stylesheet" type="text/css" />
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+        <link class="main-stylesheet" href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link class="main-stylesheet" href="/assets/css/custom.css" rel="stylesheet" type="text/css" />        
+        <link class="main-stylesheet" href="/assets/css/pages-icons.css" rel="stylesheet" type="text/css" />
       </head>
       <body>
         <div id="root">${html}</div>
@@ -172,6 +175,19 @@ const renderFullPage = (html, initialState) => {
           `//<![CDATA[
           window.webpackManifest = ${JSON.stringify(chunkManifest)};
           //]]>` : ''}
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link href="https://cdn.rawgit.com/objectivehtml/FlipClock/master/src/flipclock/css/flipclock.css" rel="stylesheet" />
+        <script src="https://cdn.rawgit.com/objectivehtml/FlipClock/master/compiled/flipclock.min.js"></script>
+        <script type="text/javascript">
+          var date = new Date(2017, 09, 05);
+          var now = new Date();
+          var diff = (date.getTime()/1000) - (now.getTime()/1000);
+
+          var clock = $('.clock').FlipClock(diff,{
+              clockFace: 'DailyCounter',
+              countdown: true
+          }); 
         </script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
@@ -218,10 +234,6 @@ app.use((req, res, next) => {
         return decrypt.decodeToken(access(req, 'user.data.token'))
         .then((user) => {
             // store.dispatch(setClientId(user.clientId));
-            if(urlValues.length >= 2) {
-                store.dispatch(setClientId(urlValues[2]));
-                store.dispatch(setBotId(urlValues[3]));
-            }
             store.dispatch(setUser(user));
             return fetchComponentData(store, renderProps.components, renderProps.params);
         })

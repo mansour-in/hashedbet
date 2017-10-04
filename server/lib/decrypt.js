@@ -3,11 +3,8 @@ const config = require('../config');
 
 function secureData(data) {
     return {
-        clientId: data.clientId,
+        ethereumAddress: data.ethereumAddress,
         email: data.email,
-        avatar: data.avatar,
-        role: data.role,
-        fullName: data.fullName
     };
 }
 

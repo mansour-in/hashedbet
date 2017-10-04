@@ -16,7 +16,6 @@ export default function App(props) {
         <Provider store={props.store}>
             <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory} home={IndexRoute}>
                 {routes}
-                {notFoundRoutes}
             </Router>
         </Provider>
     );
