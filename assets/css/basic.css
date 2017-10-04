@@ -1,0 +1,11 @@
+.top-list li{
+    padding: 0;
+    margin: 0;
+    float: left;
+    list-style: none;
+    width: 25%;
+    text-align: center;
+    border-bottom: 20px solid red;
+    height: 85px;
+    border-bottom: 20px solid rgba(255,255,255,0.2);
+}

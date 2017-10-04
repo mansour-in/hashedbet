@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title> Clever Bots </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107389172-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+      gtag('config', 'UA-107389172-1');
+  </script>
+  <!-- GA-code stop -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=" crossorigin="anonymous" />
+
+  <!-- Custom styling plus plugins -->
+  <link href="../../assets/css/custom.css" rel="stylesheet">
+  <link href="../../assets/css/icheck/flat/green.css" rel="stylesheet">
+
+
+  <script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+
+  <!--[if lt IE 9]>
+        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+        <![endif]-->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+<body style="background:#F7F7F7;">
+
+  <div class="">
+    <a class="hiddenanchor" id="toregister"></a>
+    <a class="hiddenanchor" id="tologin"></a>
+    <a class="hiddenanchor" id="toforgot"></a>
+
+    <div id="wrapper">
+      <div id="login" class="animate form">
+        <section class="login_content">
+          <img src="/assets/img/clever-icon.png">          
+          <form id="loginForm" action="/login" method="post">
+            <h1>Login</h1>
+
+            <%if (error) {%>
+            <div id="loginError" class="red">
+                <p><%- message %></p>
+            </div>
+            <% } %>
+
+            <div>
+              <input type="email" class="form-control" placeholder="Email" name="email" required="" />
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" name="password" required="" />
+            </div>
+            <div>
+              <button class="btn btn-default submit">Log in</button>
+              <a class="reset_pass" href="#toforgot">Lost your password?</a>
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+
+              <p class="change_link">New to the site?
+                <a href="#toregister" class="to_register"> Create Account </a>
+              </p>
+              <div class="clearfix"></div>
+              <br />
+              <div>
+                <p>©2015 All Rights Reserved</p>
+              </div>
+            </div>
+          </form>
+          <!-- form -->
+        </section>
+        <!-- content -->
+      </div>
+      <div id="register" class="animate form">
+        <section class="login_content">
+          <img src="/assets/img/clever.png">
+          <form id="signupForm">
+            <h1>Create Account</h1>
+            <div id="signupError">
+
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Username" name="username" required="" />
+            </div>
+            <div>
+              <input type="email" class="form-control" placeholder="Email" name="email" required="" />
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" name="password" minlength="6" required="" />
+            </div>
+            <div>
+              <button class="btn btn-default submit" id="execSignup">Submit</button>
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+
+              <p class="change_link">Already a member ?
+                <a href="#tologin" class="to_register"> Log in </a>
+              </p>
+              <div class="clearfix"></div>
+              <br />
+              <div>
+                <p>©2017 All Rights Reserved. Privacy and Terms</p>
+              </div>
+            </div>
+          </form>
+          <!-- form -->
+        </section>
+        <!-- content -->
+      </div>
+      <div id="forgot" class="animate form">
+        <section class="login_content">
+          <img src="/assets/img/clever.png">
+          <form>
+            <h1>Forgot Password</h1>
+            <div id="forgotResult" style="position:relative;bottom:14px">
+            </div>
+            <div>
+              <input type="text" name="email" class="form-control" placeholder="Enter your email" required="" />
+            </div>
+            <div>
+              <button class="btn btn-default submit" id="sendVerificationLink">Send Verification Link</button>
+              <p class="change_link">Already a member ?
+                <a href="#tologin" class="to_register"> Log in </a>
+              </p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+
+              <p class="change_link">New to the site?
+                <a href="#toregister" class="to_register"> Create Account </a>
+              </p>
+              <div class="clearfix"></div>
+              <br />
+              <div>
+                <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+              </div>
+            </div>
+          </form>
+          <!-- form -->
+        </section>
+        <!-- content -->
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function() {
+
+
+      $('#signupForm').submit(function(event) {
+
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        let formData = {
+          'username': $('#signupForm input[name=username]').val(),
+          'email': $('#signupForm input[name=email]').val(),
+          'password': $('#signupForm input[name=password]').val(),
+        };
+
+        // process the form
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: '/signup', // the url where we want to POST
+            data: formData, // our data object
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+          })
+          // using the done promise callback
+          .done(function(data) {
+
+            // log data to the console so we can see
+            console.log(data);
+
+            // here we will handle errors and validation messages
+            $('#signupForm #signupError').html("Invalid Username or Password !");
+          });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+      });
+
+      $('#forgot').submit(function(event) {
+        $('#forgot #forgotResult').css('display','none');
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        let formData = {
+          'email': $('#forgot input[name=email]').val()
+        };
+
+        // process the form
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: '/forgotpassword', // the url where we want to POST
+            data: formData, // our data object
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+          })
+          // using the done promise callback
+          .done(function(data) {
+            // log data to the console so we can see
+            if (data.status === 'success') {
+                $('#forgot #forgotResult').html('Email sent successfully');
+                $('#forgot #forgotResult').css('display','block');     
+            } else {
+                $('#forgot #forgotResult').html('Sorry! Something went wrong');
+                $('#forgot #forgotResult').css('display','block');
+            }
+
+            // here we will handle errors and validation messages
+            // $('#signupForm #signupError').html("Invalid Username or Password !");
+          });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+      });
+    });
+
+  </script>
+</body>
+
+</html>
