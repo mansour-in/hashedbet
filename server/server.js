@@ -162,7 +162,7 @@ const renderFullPage = (html, initialState) => {
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-        <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
         <link class="main-stylesheet" href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
         <link class="main-stylesheet" href="/assets/css/custom.css" rel="stylesheet" type="text/css" />        
         <link class="main-stylesheet" href="/assets/css/pages-icons.css" rel="stylesheet" type="text/css" />
