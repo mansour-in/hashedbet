@@ -58,7 +58,7 @@ export class Participate extends Component {
                   <div className="row">
                     <div className="col-md-12 m-t-30 m-b-30 p-t-50  top-list">
                       <div className="col-md-12 text-center">
-                        <h1 className="light text-white xs-p-t-30 sm-p-b-30">Todays Bonus - 40%</h1>
+                        <h1 className="light text-white xs-p-t-30 sm-p-b-30">Todays Bonus - 35%</h1>
                         <h5>Click Participate to Entroll</h5>
                         {/* <CountDown
       date="2019-09-12T00:00:00+00:00"
