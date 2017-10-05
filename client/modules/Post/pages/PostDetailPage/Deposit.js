@@ -59,7 +59,7 @@ export class Deposit extends Component {
                        <img className="card-img-top" src="/assets/images/qr.png" alt="Card image cap" />
                        <br/>
                        <br/>
-                      <input type="text" className="countdown form-control form-control-success ethereum-address" id="ethereum-address"  placeholder="0x9473BC8BB575Ffc15CB2179cd9398Bdf5730BF55" value="0x9473BC8BB575Ffc15CB2179cd9398Bdf5730BF55" />
+                      <input type="text" className="countdown form-control form-control-success ethereum-address" id="ethereum-address"  placeholder="0x014aD828044Ed4eb1A31bb79bEEaB6D303977ad0" value="0x014aD828044Ed4eb1A31bb79bEEaB6D303977ad0" />
                       <br />
                       <br />
                       <button type="button" className="btn btn-primary " onClick={this.showTerms.bind(this)}>Back</button>
