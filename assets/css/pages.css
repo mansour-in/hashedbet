@@ -663,6 +663,7 @@ body.pace-white .pace .pace-progress {
 .header .menu > li > a.btn,
 .header .menu > li > a.btn:hover {
   opacity: 1;
+  margin-bottom: 10px;
 }
 .header .menu > li > a > span {
   font-size: 12px;
@@ -9000,7 +9001,21 @@ margin:0;
     border-bottom: 20px solid #fff !important;
 }
 .top-list li h4{color:#fff;}
-.countdown{
-  width: 625px !important;
-  margin: 0 auto !important; 
+.investment-table {
+  width: 625px;
+}
+@media (max-width: 767px) {
+  .investment-table {
+    width: auto !important;
+  }
+  .countdown{
+    width: auto;
+    margin: 0 auto !important; 
+  }
+}
+@media (min-width: 768px) {
+  .countdown{
+    width: 625px !important;
+    margin: 0 auto !important; 
+  }
 }
