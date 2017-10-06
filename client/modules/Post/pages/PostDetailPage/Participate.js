@@ -12,6 +12,7 @@ export class Participate extends Component {
     this.state = {
         showParticipate: true,
         showTermsandConditions: false,
+        todayDate: new Date().getDate(),
     }
     this.showTerms = this.showTerms.bind(this);
   }
@@ -22,19 +23,29 @@ export class Participate extends Component {
         showTermsandConditions: true, 
     })
   }
-  finish() {
-    console.log('Countdown finished');
-  }
 
   render() {
-    const messages = {
-      days: {
-        plural: 'Days',
-        singular: 'Day',
-      },
-      hours: 'Hours',
-      mins: 'Min',
-      segs: 'Sec',
+    switch(this.state.todayDate) {
+      case 6:
+      var bonusToday = 35;
+        break;
+      case 7:
+        var bonusToday = 32;
+        break;
+      case 8:
+        var bonusToday = 29;
+        break;
+      case 9:
+        var bonusToday = 26;
+        break;
+      case 10:
+        var bonusToday = 23;
+        break;
+      case 11:
+        var bonusToday = 20;
+        break;
+      default:
+        var bonusToday = 0;
     }
     return(
         <div>
@@ -58,16 +69,10 @@ export class Participate extends Component {
                   <div className="row">
                     <div className="col-md-12 m-t-30 m-b-30 p-t-50  top-list">
                       <div className="col-md-12 text-center">
-                        <h1 className="light text-white xs-p-t-30 sm-p-b-30">Todays Bonus - 35%</h1>
+                        <h1 className="light text-white xs-p-t-30 sm-p-b-30">Todays Bonus - {bonusToday}%</h1>
                         <h5>Click Participate to Entroll</h5>
-                        {/* <CountDown
-      date="2019-09-12T00:00:00+00:00"
-      {...messages}
-      onEnd={this.finish.bind(this)} /> */}
                         <br/>
-                        {/* <div className="clock countdown"> */}
                         <div>
-                          {/* </div> */}
                         </div>
                         <div className="message"></div>
                         <br/>

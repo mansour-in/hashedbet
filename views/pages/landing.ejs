@@ -36,7 +36,7 @@
         <div class="menu-content mobile-dark pull-right clearfix" data-pages-direction="slideRight" id="header">
           <div class="header-inner">
             <ul class="menu">
-              <!-- <li><a href="#" class="active">Advantages</a></li> -->
+              <li><i class="fa fa-window-close" aria-hidden="true"></i></li>             
               <li><a href="assets/files/whitepaper.pdf" target="_new">WhitePaper</a></li>
               <li><a href="faq">FAQ</a></li>
               <li class="text-center">
@@ -57,19 +57,48 @@
             <div class="container">
               <div class="col-md-12 m-t-100 m-b-100 p-t-50 text-center">
                 <h1 class="light text-white xs-p-t-30 sm-p-b-30">Pre Sales Started</h1>
-                <h5>Invest in Pre ICO and receive 35% bonus today!</h5>
+                <h5 id="bonus-first"></h5>
                 <div class="clock countdown" style="margin:2em;"></div>
                 <div class="message"></div>
-                <h5>Pre-Sales Ends at 12th October 2017</h5>
+                <h5>Pre-Sales Ends at 23:59 - 11th October 2017</h5>
                 <div class="row countdown">
                     <div class="col-sm-4"><h5>Total LOTC Sales</h5><h5>300,000,000</h5></div>
-                    <div class="col-sm-4"><h5>Today Bonus</h5><h5>+ 35% Bonus</h5></div>
+                    <div class="col-sm-4"><h5>Today Bonus</h5><h5 id="bonus-second"></h5></div>
                     <div class="col-sm-4"><h5>1 Ethereum (ETH)</h5><h5>2,000 ​LOTC</h5></div>
                   </div>
                   
                 <h1><a href="#" class="btn btn-primary btn-cons font-montserrat" role="button" data-toggle="modal" data-target="#participate-modal">Participate</a></h1>
                   
               </div>
+              <script>
+                  (function () {
+                    var dateToday = new Date().getDate();
+                    switch(dateToday) {
+                      case 6:
+                        var bonusToday = 35
+                        break;
+                      case 7:
+                        var bonusToday = 32
+                        break;
+                      case 8:
+                        var bonusToday = 29
+                        break;
+                      case 9:
+                        var bonusToday = 26
+                        break;
+                      case 10:
+                        var bonusToday = 23
+                        break;
+                      case 11:
+                        var bonusToday = 20
+                        break;
+                      default:
+                        var bonusToday = "Pre-sale Bonus Ends!"
+                    }
+                    document.getElementById("bonus-first").innerHTML = "Invest in Pre ICO and receive "+bonusToday+"% bonus today";
+                    document.getElementById("bonus-second").innerHTML = "+ "+bonusToday+"% Bonus";
+                  })();
+                </script>
             </div>
           </div>
         </div>
