@@ -441,7 +441,7 @@ body.pace-white .pace .pace-progress {
 .header.dark .menu-toggler .one,
 .header.dark .menu-toggler .two,
 .header.dark .menu-toggler .three {
-  background: #ffffff;
+  background: #f30026;
 }
 .header.light-solid {
   border-bottom: 1px solid #f0f0f0;
@@ -8102,7 +8102,7 @@ sup.dollar {
   .header.light-solid .menu-content.mobile-dark a:not(.btn),
   .header.transparent-dark .menu-content.mobile-dark a:not(.btn),
   .header.transparent-light .menu-content.mobile-dark a:not(.btn) {
-    color: #788195 !important;
+    color: #000000 !important;
   }
   .header.dark .menu-content.mobile-dark a:not(.btn):hover,
   .header.light .menu-content.mobile-dark a:not(.btn):hover,
@@ -8159,7 +8159,7 @@ sup.dollar {
   .header.light-solid .menu-content.mobile-dark.mobile-dark .menu > li > a:not(.btn):active,
   .header.transparent-dark .menu-content.mobile-dark.mobile-dark .menu > li > a:not(.btn):active,
   .header.transparent-light .menu-content.mobile-dark.mobile-dark .menu > li > a:not(.btn):active {
-    color: #ffffff !important;
+    color: #dc0244 !important;
   }
   .header.dark .menu-content.mobile-dark.mobile-dark .menu > li > a:not(.btn):visited,
   .header.light .menu-content.mobile-dark.mobile-dark .menu > li > a:not(.btn):visited,

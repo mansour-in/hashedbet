@@ -52,3 +52,8 @@ div#signUpError {
 img.card-img-top {
     border: 15px #fff solid;
 }
+
+.visible-sm-inline.visible-xs-inline.menu-toggler.pull-right.p-l-10.on {
+    z-index: 999;
+    position: relative;
+}
