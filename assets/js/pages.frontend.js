@@ -371,7 +371,7 @@
         $('body').toggleClass('menu-opened');
         $('[data-pages="header-toggle"]').toggleClass('on');
         
-        // Integrated to close menu button whenever user clicks away 
+        // Integrated to close menu button whenever user clicks away  
         $(document).click(function(){
             $('body').removeClass("menu-opened");
             $('[data-pages="header-toggle"]').removeClass("on");
