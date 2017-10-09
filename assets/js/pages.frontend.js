@@ -370,8 +370,15 @@
         var header = el.attr('data-pages-element');
         $('body').toggleClass('menu-opened');
         $('[data-pages="header-toggle"]').toggleClass('on');
+        
+        // Integrated to close menu button whenever user clicks away
+        $(document).click(function(){
+            $('body').removeClass("menu-opened");
+            $('[data-pages="header-toggle"]').removeClass("on");
+          });
 
     });
+   
     $(window).on("resize", function() {
         $('[data-pages="header"]').header('updateAffix');
     })
