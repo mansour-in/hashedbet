@@ -37,7 +37,9 @@
           <div class="header-inner">
             <ul class="menu">
               <!-- <li><a href="#" class="active">Advantages</a></li> -->
-              <!-- <li><a href="assets/files/whitepaper.pdf" target="_new">WhitePaper</a></li> -->
+                   
+              <li><a href="assets/files/whitepaper-en.pdf" target="_new">WhitePaper (EN)</a></li>
+              <li><a href="assets/files/whitepaper-kr.pdf" target="_new">WhitePaper (KR)</a></li>
               <li><a href="faq">FAQ</a></li>
               <!-- <li class="text-center">
                 <a href="#" class="btn btn-primary btn-cons font-montserrat" role="button" data-toggle="modal" data-target="#login-modal">LOGIN</a>
@@ -156,179 +158,272 @@
 <p>A : Only 5% to 10% of the online content is stored &nbsp;and rest 90 - 95% are kept offline. (MULTISIGNATURE WALLET). </p>
   </div></div></div></div></section>
 
-    <!-- BEGIN # MODAL LOGIN -->
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header" align="center">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-              </button>
-            </div>
-            <!-- Begin # DIV Form -->
-            <div id="div-forms">
-              <!-- Begin # Login Form -->
-              <form id="loginForm"  action="/login" class="center" method="post">
-               <img src="assets/images/logo.png"  width="200px"/><br/><br/>
-                <div class="modal-body">
-                  <!-- <div id="div-login-msg"></div> -->
-                  <div id="loginError" class="red">
-                  </div>
-                <input type="email" class="form-control" placeholder="Email" name="email" required="" />
-                <input type="password" class="form-control" placeholder="Password" name="password" required="" />
-                </div>
-                <div class="modal-footer">
-                  <div>
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login"></input>
-                  </div>
-                </div>
-              </form>
-              </div>
-              <script
-              src="https://code.jquery.com/jquery-3.2.1.js"
-              integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-              crossorigin="anonymous">
-              </script>
-              <script>
-                  $(document).ready(function() {
-          
-          
-                $('#loginForm').submit(function(event) {
-          
-                  // get the form data
-                  // there are many ways to get this data using jQuery (you can use the class or id also)
-                  let formData = {
-                    'email': $('#loginForm input[name=email]').val(),
-                    'password': $('#loginForm input[name=password]').val(),
-                  };
-                  // process the form
-                  $.ajax({
-                      type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                      url: '/login', // the url where we want to POST
-                      data: formData, // our data object
-                      dataType: 'json', // what type of data do we expect back from the server
-                      encode: true
-                    })
-                    // using the done promise callback
-                    .done(function(data) {
-                      if (data.data === 'Success') {
-                        window.location.assign("/dashboard");
-                      } else {
-                        // here we will handle errors and validation messages
-                        $('#loginForm #loginError').html("Invalid Username or Password !");
-                      }
-                    });
-          
-                  // stop the form from submitting the normal way and refreshing the page
-                  event.preventDefault();
-                });
-              });
-              </script> 
-              <!-- ________________________________________ -->
-              <!-- _____________________________________ -->
-              <!-- End # Login Form -->
-            </div>
-            <!-- End # DIV Form -->
-          </div>
+  <section class="p-b-30 p-t-20">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <ul class="no-style fs-11 no-padding font-arial">
+            <!-- <li class="inline no-padding"><a href="/" class=" text-master p-r-10 b-r b-grey">Home</a></li> -->
+            <!-- <li class="inline no-padding"><a href="#" class="hint-text text-master p-l-10 p-r-10 b-r b-grey">Advantages</a></li> -->
+            <!-- <li class="inline no-padding"><a href="assets/files/whitepaper.pdf" target="_new" class="hint-text text-master p-l-10 p-r-10 b-r b-grey">Whitepaper</a></li> -->
+            <!-- <li class="inline no-padding"><a href="#" class="hint-text text-master p-l-10 p-r-10 xs-no-padding xs-m-t-10">Terms</a></li> -->
+          </ul>
         </div>
-      </div>    
-      <!-- END # MODAL LOGIN -->
-  
-      
-  <!-- BEGIN # MODAL REGISTER -->
-  <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="register-modal" role="dialog" style="display: none;" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div align="center" class="modal-header">
-          <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
-        </div><!-- Begin # DIV Form -->
-        <div id="div-forms">        
-          <form id="signUpForm" name="signup-form" class="center"><!-- Begin # Signup Form -->
-  
-            <img src="assets/images/logo.png"  width="200px"/><br/><br/>
-            <div class="modal-body">
-              </div>
-              <!-- <div id="div-login-msg">
-                <div class="glyphicon glyphicon-chevron-right" id="icon-login-msg"></div>
-              </div> -->
-              <div id="signUpError" class="red">
-              <input id="register_ethereum" name="ethereumAddress" class="form-control" type="text" placeholder="Ethereum Address" required><br/>
-              <input id="register_email" name="email" class="form-control" type="text" placeholder="E-Mail" required>
-              <input id="register_password" name="password" class="form-control" type="password" placeholder="Password" required>
-            </div>
-            <div class="modal-footer">
-              <div>
-                  <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
-              </div>
-          </div>
-          </form><!-- End # Login Form -->  
-          <script>
-            $(document).ready(function() {
-    
-    
-          $('#signUpForm').submit(function(event) {
-    
-            // get the form data
-            // there are many ways to get this data using jQuery (you can use the class or id also)
-            let formData = {
-              'ethereumAddress': $('#signUpForm input[name=ethereumAddress]').val(),
-              'email': $('#signUpForm input[name=email]').val(),
-              'password': $('#signUpForm input[name=password]').val(),
-            };
-  
-            // process the form
-            $.ajax({
-                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: '/register', // the url where we want to POST
-                data: formData, // our data object
-                dataType: 'json', // what type of data do we expect back from the server
-                encode: true
-              })
-              // using the done promise callback
-              .done(function(data) {
-                if (data.status === 'success') {
-                  window.alert('Your Registration is Successful. Click Login to Participate.')
-                  window.location.assign("/");
-                 
-                  // $('#signUpForm #signUpError').html("Registration has been successfully updated");
-                } else {
-                  // here we will handle errors and validation messages
-                  $('#signUpForm #signUpError').html("There is a Error in Registration.");
-                }
-              })
-              .fail(function(msg) {
-                window.alert('There is eror in Registration. Please Try Again Sometime.');
-                window.location.assign("/");
-              });
-    
-            // stop the form from submitting the normal way and refreshing the page
-            event.preventDefault();
-          });
-        });
-        </script> 
-        </div><!-- End # DIV Form -->
+        <div class="col-sm-6 text-right font-arial sm-text-left">
+          <ul class="no-style fs-12 no-padding pull-right xs-pull-left xs-m-t-20">
+            <li class="inline no-padding"><a class="p-l-30 fs-16 xs-no-padding" href="https://www.facebook.com/coinbet.coinbet.3" target="_new"><i class="fa fa-facebook"></i></a></li>
+            <li class="inline text-master no-padding"><a class="p-l-30 fs-16" href="https://twitter.com/coin_bet" target="_new"><i class="fa fa-twitter"></i></a></li>
+            <li class="inline text-master no-padding"><a class="p-l-30 fs-16" href="https://bitcointalk.org/index.php?topic=2217354" target="_new"><i class="fa fa-btc"></i></a></li>
+            <li class="inline text-master no-padding"><a class="p-l-30 fs-16" href="https://open.kakao.com/o/gWDSb5A" target="_new"><i class="fa fa-message"></i><img src="https://cdn0.iconfinder.com/data/icons/rounded-social-media-set-1/144/KakaoTalk_Rounded-20.png"/></a></li>
+            <li class="inline text-master no-padding"><a class="p-l-30 fs-16" href="https://t.me/joinchat/AAAAAEPFW-rHL8yKlVYPDQ" target="_new"><img src="https://cdn1.iconfinder.com/data/icons/social-media-2149/100/--09-16.png"/></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"></div>
       </div>
     </div>
-    </div><!-- END # MODAL REGISTER -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link href="https://cdn.rawgit.com/objectivehtml/FlipClock/master/src/flipclock/css/flipclock.css" rel="stylesheet" />
-    <script src="https://cdn.rawgit.com/objectivehtml/FlipClock/master/compiled/flipclock.min.js"></script>
-    <script type="text/javascript">
-      var date = new Date(2017, 09, 05);
-      var now = new Date();
-      var diff = (date.getTime()/1000) - (now.getTime()/1000);
-      
-      var clock = $('.clock').FlipClock(diff,{
-          clockFace: 'DailyCounter',
-          countdown: true
-      }); 
-    </script>
-    <!-- <script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script> -->
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/pages.frontend.js"></script>
+  </section>
 
-    <!-- <script type="text/javascript" src="assets/js/login.js"></script> -->
-    <!-- <script type="text/javascript" src="assets/js/jquery.min.js"></script> -->
-    <!-- <script type="text/javascript" src="assets/js/jquery.flipcountdown.js"></script> -->
-  </body>
+  <!-- BEGIN # MODAL LOGIN -->
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+          </div>
+          <!-- Begin # DIV Form -->
+          <div id="div-forms">
+            <!-- Begin # Login Form -->
+            <form id="loginForm"  action="/login" class="center" method="post">
+             <img src="assets/images/logo.png"  width="200px"/><br/><br/>
+              <div class="modal-body">
+                <!-- <div id="div-login-msg"></div> -->
+                <div id="loginError" class="red">
+                </div>
+              <input type="email" class="form-control" placeholder="Email" name="email" required="" />
+              <input type="password" class="form-control" placeholder="Password" name="password" required="" />
+              </div>
+              <div class="modal-footer">
+                <div>
+                  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login"></input>
+                </div>
+              </div>
+            </form>
+            </div>
+            <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous">
+            </script>
+            <script>
+                $(document).ready(function() {
+        
+        
+              $('#loginForm').submit(function(event) {
+        
+                // get the form data
+                // there are many ways to get this data using jQuery (you can use the class or id also)
+                let formData = {
+                  'email': $('#loginForm input[name=email]').val(),
+                  'password': $('#loginForm input[name=password]').val(),
+                };
+                // process the form
+                $.ajax({
+                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url: '/login', // the url where we want to POST
+                    data: formData, // our data object
+                    dataType: 'json', // what type of data do we expect back from the server
+                    encode: true
+                  })
+                  // using the done promise callback
+                  .done(function(data) {
+                    if (data.data === 'Success') {
+                      window.location.assign("/dashboard");
+                    } else {
+                      // here we will handle errors and validation messages
+                      $('#loginForm #loginError').html("Invalid Username or Password !");
+                    }
+                  });
+        
+                // stop the form from submitting the normal way and refreshing the page
+                event.preventDefault();
+              });
+            });
+            </script> 
+            <!-- ________________________________________ -->
+            <!-- _____________________________________ -->
+            <!-- End # Login Form -->
+          </div>
+          <!-- End # DIV Form -->
+        </div>
+      </div>
+    </div>    
+    <!-- END # MODAL LOGIN -->
+
+  <!-- BEGIN # MODAL PARTICIPATE -->
+  <div class="modal fade" id="participate-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+          </div>
+          <!-- Begin # DIV Form -->
+          <div id="div-forms">
+            <!-- Begin # Login Form -->
+            <form id="participateForm"  action="/login" class="center" method="post">
+             <img src="assets/images/logo.png"  width="200px"/><br/><br/>
+              <div class="modal-body">
+                <!-- <div id="div-login-msg"></div> -->
+                <div id="participateError" class="red">
+                </div>
+              <input type="email" class="form-control" placeholder="Email" name="email" required="" />
+              <input type="password" class="form-control" placeholder="Password" name="password" required="" />
+              </div>
+              <div class="modal-footer">
+                <div>
+                  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login"></input>
+                </div>
+              </div>
+            </form>
+            </div>
+            <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous">
+            </script>
+            <script>
+                $(document).ready(function() {
+        
+        
+              $('#participateForm').submit(function(event) {
+        
+                // get the form data
+                // there are many ways to get this data using jQuery (you can use the class or id also)
+                let formData = {
+                  'email': $('#participateForm input[name=email]').val(),
+                  'password': $('#participateForm input[name=password]').val(),
+                };
+                // process the form
+                $.ajax({
+                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url: '/login', // the url where we want to POST
+                    data: formData, // our data object
+                    dataType: 'json', // what type of data do we expect back from the server
+                    encode: true
+                  })
+                  // using the done promise callback
+                  .done(function(data) {
+                    if (data.data === 'Success') {
+                      window.location.assign("/dashboard");
+                    } else {
+                      // here we will handle errors and validation messages
+                      $('#participateForm #participateError').html("Invalid Username or Password !");
+                    }
+                  });
+        
+                // stop the form from submitting the normal way and refreshing the page
+                event.preventDefault();
+              });
+            });
+            </script> 
+            <!-- ________________________________________ -->
+            <!-- _____________________________________ -->
+            <!-- End # Login Form -->
+          </div>
+          <!-- End # DIV Form -->
+        </div>
+      </div>
+    </div>    
+    <!-- END # MODAL PARTICIPATE -->
+    
+<!-- BEGIN # MODAL REGISTER -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="register-modal" role="dialog" style="display: none;" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div align="center" class="modal-header">
+      </div><!-- Begin # DIV Form -->
+      <div id="div-forms">        
+        <form id="signUpForm" name="signup-form" class="center"><!-- Begin # Signup Form -->
+
+          <img src="assets/images/logo.png"  width="200px"/>
+          <div class="modal-body">
+            </div>
+            <div id="signUpError" class="red">
+            <input id="register_ethereum" name="ethereumAddress" class="form-control" type="text" placeholder="Ethereum Address" required>
+            <input id="register_email" name="email" class="form-control" type="text" placeholder="E-Mail" required>
+            <input id="register_password" name="password" class="form-control" type="password" placeholder="Password" required>
+          </div>
+          <div class="modal-footer">
+            <div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+            </div>
+        </div>
+        </form><!-- End # Login Form -->  
+        <script>
+          $(document).ready(function() {
+  
+  
+        $('#signUpForm').submit(function(event) {
+  
+          // get the form data
+          // there are many ways to get this data using jQuery (you can use the class or id also)
+          let formData = {
+            'ethereumAddress': $('#signUpForm input[name=ethereumAddress]').val(),
+            'email': $('#signUpForm input[name=email]').val(),
+            'password': $('#signUpForm input[name=password]').val(),
+          };
+          // process the form
+          $.ajax({
+              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+              url: '/register', // the url where we want to POST
+              data: formData, // our data object
+              dataType: 'json', // what type of data do we expect back from the server
+              encode: true
+            })
+            // using the done promise callback
+            .done(function(data) {
+              if (data.status === 'success') {
+                window.alert('Your Registration is Successful. Click Login to Participate.')
+                window.location.assign("/");
+               
+                // $('#signUpForm #signUpError').html("Registration has been successfully updated");
+              } else {
+                // here we will handle errors and validation messages
+                $('#signUpForm #signUpError').html("There is a Error in Registration.");
+              }
+            })
+            .fail(function(msg) {
+              window.alert('There is eror in Registration. Please Try Again Sometime.');
+              window.location.assign("/");
+            });
+  
+          // stop the form from submitting the normal way and refreshing the page
+          event.preventDefault();
+        });
+      });
+      </script> 
+      </div><!-- End # DIV Form -->
+    </div>
+  </div>
+  </div><!-- END # MODAL REGISTER -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link href="https://cdn.rawgit.com/objectivehtml/FlipClock/master/src/flipclock/css/flipclock.css" rel="stylesheet" />
+  <script src="https://cdn.rawgit.com/objectivehtml/FlipClock/master/compiled/flipclock.min.js"></script>
+  <script type="text/javascript">
+    var date = new Date(2017, 09, 11);
+    var now = new Date();
+    var diff = (date.getTime()/1000) - (now.getTime()/1000);
+    
+    var clock = $('.clock').FlipClock(diff,{
+        clockFace: 'DailyCounter',
+        countdown: true
+    }); 
+  </script>
+  <!-- <script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script> -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/js/pages.frontend.js"></script>
+
+  <!-- <script type="text/javascript" src="assets/js/login.js"></script> -->
+  <!-- <script type="text/javascript" src="assets/js/jquery.min.js"></script> -->
+  <!-- <script type="text/javascript" src="assets/js/jquery.flipcountdown.js"></script> -->
+</body>
 </html>

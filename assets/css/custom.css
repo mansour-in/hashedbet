@@ -57,3 +57,7 @@ img.card-img-top {
     z-index: 999;
     position: relative;
 } 
+
+.text-justify {
+    text-align: justify;
+}
