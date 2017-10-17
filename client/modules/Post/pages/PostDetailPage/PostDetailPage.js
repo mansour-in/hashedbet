@@ -4,14 +4,14 @@ import Helmet from 'react-helmet';
 import {getUserData} from '../../PostReducer';
 
 import Participate from './Participate';
-
+import MiniGameIndex from './MiniGameComponents/MiniGameIndex'
 export class PostDetailPage extends Component {
   constructor(props) {
     super(props)
   }
   render() {
     return(
-      <Participate />
+      <MiniGameIndex />
     );
   };
 };
