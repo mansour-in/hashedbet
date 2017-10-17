@@ -18,11 +18,11 @@ tr {
     color: #ffffff;
 }
 
-div#root {
+/* div#root {
     background-image: url(/assets/images/mainheader.png);
     width: 100%;
     height: 100%;
-}
+} */
 
 section.jumbotron.full-width.border-radius-none {
     background-image: url(/assets/images/mainheader.png);

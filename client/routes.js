@@ -35,7 +35,7 @@ export default (
           path="/dashboard"
           getComponent={(nextState, cb) => {
               require.ensure([], require => {
-                  cb(null, require('./modules/Post/pages/PostDetailPage/MiniGameComponents/MiniGameIndex').default);
+                  cb(null, require('./modules/MiniGameModule/pages/MiniGameIndex/MiniGameIndexPage').default);
               });
           }}
         />
