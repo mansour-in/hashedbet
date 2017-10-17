@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserData } from '../../MiniGameReducer';
 import * as _ from 'lodash';
@@ -21,7 +21,6 @@ export class MiniGameIndexPage extends Component {
         fetch(`http://localhost:5000/api/v1/getEtherBalance/${this.state.ethereumAddress}`, {
             method: 'GET',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'text/plain',
             },
         })
@@ -70,19 +69,16 @@ export class MiniGameIndexPage extends Component {
         const results = fetch('http://localhost:5000/api/v1/assignTokenToUser', {
             method: 'PUT',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(bodyData),
         })
     .then(response => {
-        console.log(JSON.stringify(response));
         return response;
     })
     .catch(err => {
         return err;
     });
-        console.log(results);
         return results;
     }
 
@@ -124,7 +120,7 @@ export class MiniGameIndexPage extends Component {
 }
 
 // Retrieve data from store as props
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
     return {
         userData: getUserData(state),
     };
