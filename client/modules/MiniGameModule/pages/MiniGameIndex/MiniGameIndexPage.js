@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getUserData } from '../../MiniGameReducer';
 import * as _ from 'lodash';
@@ -10,14 +10,15 @@ export class MiniGameIndexPage extends Component {
             tokenValue: [],
             tokenSelectedValue: [],
             etherbalance: null,
-            ethereumAddress: '0x281055afc982d96fab65b3a49cac8b878184cb99',
+            ethereumAddress: this.props.userData.ethereumAddress,
         };
         this.addValue = this.addValue.bind(this);
         this.tokenSelect = this.tokenSelect.bind(this);
     // this.sendToken = this.sendToken.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
+        console.log(this.props.userData);
         fetch(`http://localhost:5000/api/v1/getEtherBalance/${this.state.ethereumAddress}`, {
             method: 'GET',
             headers: {
@@ -127,6 +128,7 @@ function mapStateToProps(state) {
 }
 
 MiniGameIndexPage.propTypes = {
+    userData: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(MiniGameIndexPage);

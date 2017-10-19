@@ -14,7 +14,7 @@ function stripAuthenticationUserData(user) {
 function setCookie(res, value) {
     const date = new Date();
     date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
-    res.cookie('clever', JSON.stringify(_.get(value, 'user', {})), {
+    res.cookie('coinbet', JSON.stringify(_.get(value, 'user', {})), {
         expires: date,
         httpOnly: false,
     });
@@ -71,7 +71,7 @@ exports.signin = (req, res, next) => {
 };
 
 exports.signout = (req, res, next) => {
-    res.clearCookie('clever');
+    res.clearCookie('coinbet');
     res.clearCookie('connect.sid');
     req.logout();
     req.session.destroy();
@@ -123,6 +123,16 @@ exports.resetChangePassword = (req, res, next) => {
  */
 exports.register = (req, res, next) => {
     userAPI.register(req)
+        .then(data => {
+            res.status(200).json(data);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
+};
+
+exports.getEtherBalance = (req, res, next) => {
+    userAPI.getEtherBalance(req)
         .then(data => {
             res.status(200).json(data);
         })

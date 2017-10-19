@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // React And Redux Setup
 import { configureStore } from '../client/store';
-import { setUser } from '../client/modules/Post/PostActions';
+import { setUser } from '../client/modules/MiniGameModule/MiniGameActions';
 import { Provider } from 'react-redux';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -107,7 +107,7 @@ require(`${__dirname}/routes/user.routes.js`)(app);
 
 app.use((req, res, next) => {
     if (req.user) {
-        if (_.isUndefined(_.get(req, 'cookies.clever'))) {
+        if (_.isUndefined(_.get(req, 'cookies.coinbet'))) {
             req.user = null; // eslint-disable-line
         }
         next();
@@ -126,17 +126,17 @@ app.get('/', validateSession, (req, res) => {
 //     });
 // });
 
-app.get('/resetpassword/*',validateSession, (req, res) => {
+app.get('/resetpassword/*', validateSession, (req, res) => {
     res.render('pages/resetpassword', {
 
     });
 });
 
-app.get('/bot', (req, res) => {
-    res.render('bot/samplebot', {
-        error: false
-    });
-});
+// app.get('/bot', (req, res) => {
+//     res.render('bot/samplebot', {
+//         error: false
+//     });
+// });
 app.get('/faq', (req,res) => {
     res.render('pages/faq');
 })
@@ -179,16 +179,6 @@ const renderFullPage = (html, initialState) => {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link href="https://cdn.rawgit.com/objectivehtml/FlipClock/master/src/flipclock/css/flipclock.css" rel="stylesheet" />
         <script src="https://cdn.rawgit.com/objectivehtml/FlipClock/master/compiled/flipclock.min.js"></script>
-        <script type="text/javascript">
-          var date = new Date(2017, 09, 05);
-          var now = new Date();
-          var diff = (date.getTime()/1000) - (now.getTime()/1000);
-
-          var clock = $('.clock').FlipClock(diff,{
-              clockFace: 'DailyCounter',
-              countdown: true
-          }); 
-        </script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
       </body>

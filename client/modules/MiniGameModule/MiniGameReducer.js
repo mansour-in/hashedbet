@@ -23,7 +23,7 @@ const MiniGameReducer = (state = initialState, action) => {
 // Get all posts
 // export const getPosts = state => state.posts.data;
 
-export const getUserData = state => state.posts.user;
+export const getUserData = state => state.minigame.user;
 
 // Get post by cuid
 // export const getPost = (state, cuid) => state.posts.data.filter(post => post === post);
