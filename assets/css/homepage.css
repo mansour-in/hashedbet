@@ -1,0 +1,63 @@
+.ethereum-address{
+    font-size: larger;
+    color: red;
+    font-weight: 800;
+    text-align: center;
+}
+
+.bg-table {
+    background-color: #f1f1f1;
+  }
+  
+.center{
+    text-align: center;
+}
+
+tr {
+    background: rgb(220, 2, 68);
+    color: #ffffff;
+}
+
+/* div#root {
+    background-image: url(/assets/images/mainheader.png);
+    width: 100%;
+    height: 100%;
+} */
+
+section.jumbotron.full-width.border-radius-none {
+    background-image: url(/assets/images/mainheader.png);
+    width: 100%;
+    height: 100%;
+
+}
+
+
+button.pull-right.btn.btn-primary.logout{
+    margin:10px auto;
+}
+
+h5 {
+    color: #fff;
+}
+
+img.roadmap{
+    width: 80%;
+    padding: 30px;
+}
+
+div#signUpError {
+    padding: 10px;
+}
+
+img.card-img-top {
+    border: 15px #fff solid;
+}
+
+.visible-sm-inline.visible-xs-inline.menu-toggler.pull-right.p-l-10.on {
+    z-index: 999;
+    position: relative;
+} 
+
+.text-justify {
+    text-align: justify;
+}

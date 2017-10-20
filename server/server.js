@@ -163,10 +163,10 @@ const renderFullPage = (html, initialState) => {
         <link href="/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
-        <link class="main-stylesheet" href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link class="main-stylesheet" href="/assets/css/custom.css" rel="stylesheet" type="text/css" />        
-        <link class="main-stylesheet" href="/assets/css/pages-icons.css" rel="stylesheet" type="text/css" />
-      </head>
+        <link class="main-stylesheet" href="/assets/css/custom.css" rel="stylesheet" type="text/css" />  
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet" />
+        </head>
       <body>
         <div id="root">${html}</div>
         <script>
@@ -179,6 +179,9 @@ const renderFullPage = (html, initialState) => {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link href="https://cdn.rawgit.com/objectivehtml/FlipClock/master/src/flipclock/css/flipclock.css" rel="stylesheet" />
         <script src="https://cdn.rawgit.com/objectivehtml/FlipClock/master/compiled/flipclock.min.js"></script>
+
+		<script type="text/javascript" src="/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
       </body>
