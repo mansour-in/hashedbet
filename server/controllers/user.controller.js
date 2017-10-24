@@ -140,3 +140,13 @@ exports.getEtherBalance = (req, res, next) => {
             res.status(500).json(err);
         });
 };
+
+exports.assignTokenToUser = (req, res, next) => {
+    userAPI.assignTokenToUser(req)
+        .then(data => {
+            res.status(200).json(data);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
+};

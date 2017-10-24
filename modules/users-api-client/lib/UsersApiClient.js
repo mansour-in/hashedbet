@@ -325,4 +325,24 @@ UsersApiClient.prototype.updateProfile = function (req, data) {
     return this.putJson(this.getProfileUrl(), data, this.retrieveDefaultOptions(req));
 };
 
+UsersApiClient.prototype.getEtherBalance = function(req) {
+    return this.get(this.getEtherBalanceUrl(req), this.retrieveDefaultOptions(req));
+};
+
+UsersApiClient.prototype.getEtherBalanceUrl = function(req, relative) {
+    return this.getUri('getEtherBalance/'+req.params.address, !relative);
+};
+
+// UsersApiClient.prototype.createEmployee = function (req) {
+//     return this.postJson(this.createEmployeeUrl(), req.body.employee, this.retrieveDefaultOptions(req));
+// };
+
+UsersApiClient.prototype.assignTokenToUser = function(req) {
+    return this.putJson(this.assignTokenToUserUrl(), req.body, this.retrieveDefaultOptions(req));
+};
+
+UsersApiClient.prototype.assignTokenToUserUrl = function (relative) {
+    return this.getUri('assignTokenToUser', !relative);
+};
+
 module.exports = UsersApiClient;

@@ -7,4 +7,6 @@ module.exports = (app) => {
     app.route('/resetpassword/:id').get(users.resetPassword);
     app.route('/resetpassword/:id').post(users.resetChangePassword);
     app.route('/register').post(users.register);
+    app.route('/api/getEtherBalance/:address').get(users.getEtherBalance);
+    app.route('/api/assignTokenToUser').put(users.assignTokenToUser);
 };

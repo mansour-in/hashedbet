@@ -101,8 +101,8 @@ UsersClientCore.prototype.retrieveAccessTokenQueryString = function(req) {
     var accessToken = access(req, 'user.data.token');
     return accessToken ? {
         Authorization: 'Bearer ' + accessToken,
-        'x-chatbot-clientid': req.headers['x-chatbot-clientid'],
-        'x-chatbot-id': req.headers['x-chatbot-id']
+        // 'x-chatbot-clientid': req.headers['x-chatbot-clientid'],
+        // 'x-chatbot-id': req.headers['x-chatbot-id']
     } : {};
 };
 

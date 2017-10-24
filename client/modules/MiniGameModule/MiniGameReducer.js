@@ -1,9 +1,10 @@
-import { SET_USER } from './MiniGameActions';
+import { SET_USER, SET_ETHERBALANCE, GET_TOKEN_STATUS } from './MiniGameActions';
 
 // Initial State
 const initialState = {
-    data: [],
+    etherdata: {},
     user: {},
+    tokenstatus: {},
 };
 
 const MiniGameReducer = (state = initialState, action) => {
@@ -12,7 +13,14 @@ const MiniGameReducer = (state = initialState, action) => {
         return Object.assign({}, state, {
             user: action.payload,
         });
-
+    case SET_ETHERBALANCE:
+        return Object.assign({}, state, {
+            etherdata: action.payload,
+        });
+    case GET_TOKEN_STATUS:
+        return Object.assign({}, state, {
+            tokenstatus: action.payload,
+        });
     default:
         return state;
     }
@@ -24,7 +32,7 @@ const MiniGameReducer = (state = initialState, action) => {
 // export const getPosts = state => state.posts.data;
 
 export const getUserData = state => state.minigame.user;
-
+export const getEtherData = state => state.minigame.etherdata;
 // Get post by cuid
 // export const getPost = (state, cuid) => state.posts.data.filter(post => post === post);
 
