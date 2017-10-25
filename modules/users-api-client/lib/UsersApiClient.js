@@ -345,4 +345,13 @@ UsersApiClient.prototype.assignTokenToUserUrl = function (relative) {
     return this.getUri('assignTokenToUser', !relative);
 };
 
+UsersApiClient.prototype.getConfirmedTokens = function(req) {
+    return this.get(this.getConfirmedTokensUrl(req), this.retrieveDefaultOptions(req));
+};
+
+UsersApiClient.prototype.getConfirmedTokensUrl = function(req, relative) {
+    return this.getUri('getConfirmedTokens/'+req.params.address, !relative);
+};
+
+
 module.exports = UsersApiClient;

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getUserData, getEtherData } from '../../MiniGameReducer';
-import { getEthereumBalance, setTokenValues } from '../../MiniGameActions';
+import { getUserData, getEtherData, getConfirmedTokensData } from '../../MiniGameReducer';
+import { getEthereumBalance, setTokenValues, getConfirmedTokens } from '../../MiniGameActions';
 import * as _ from 'lodash';
 
 export class MiniGameIndexPage extends Component {
@@ -15,11 +15,13 @@ export class MiniGameIndexPage extends Component {
             etherEmail: this.props.userData.email,
             tokenDisplayArray: [],
             tokenLenghtArry: [],
-            ticketValue: [],
+            ticketValue: 0.00,
+            confirmedTokenValues: [],
         };
         this.addValue = this.addValue.bind(this);
         this.tokenSelect = this.tokenSelect.bind(this);
         this.resetToken = this.resetToken.bind(this);
+        this.tokenSelect = this.tokenSelect.bind(this);
     // this.sendToken = this.sendToken.bind(this);
     }
 
@@ -28,6 +30,12 @@ export class MiniGameIndexPage extends Component {
     }
     componentWillReceiveProps(nextProps) {
         this.setState({ etherbalance: nextProps.ethereumBalance.data.ethereumBalance });
+
+        if (!_.isEmpty(nextProps.confirmedTokens)) {
+            this.setState({ confirmedTokenValues: nextProps.confirmedTokens.data.confirmedTokens });
+            this.displayConfirmedTokens();
+        }
+        // console.log(this.props.confirmedTokens);
     }
     addValue(temp) {
         this.setState({
@@ -82,6 +90,12 @@ export class MiniGameIndexPage extends Component {
             lotteryTokenExpireAt: '2017-10-13T09:25:52.173Z',
         };
         this.props.setEthereumTokens(bodyData);
+        // this.props.getConfirmedTokens(this.props.userData.ethereumAddress);
+    }
+
+    displayConfirmedTokens() {
+        console.log(this.state.confirmedTokenValues);
+   // this.setState({ confirmedTokenValues: this.props.getConfirmedTokensData });
     }
 
     render() {
@@ -185,107 +199,107 @@ export class MiniGameIndexPage extends Component {
                             </div>
                         </div>
                     </section> */}
-                    <div className="clearfix numbers-button">
-							<div className="pull-left res-pull-none">     
-                                <a><input className="btn btn-primary button" type="button" onClick={this.tokenSelect} value="+" disabled={!(this.state.tokenValue.length === 6)} /></a>
-                                <a href="javascript:{}" className="btn btn-primary ticket-added" title="Buy {this.state.tokenLenghtArry} Tickets" data-toggle="modal" data-target="#myModal2"> Buy  {this.state.tokenLenghtArry} Tickets</a>
-							</div>
-							<div className="pull-right res-pull-none">
-								<a href="javascript:{}" className="btn btn-primary buy-now" title="My Tickets" data-toggle="modal" data-target="#myModal1">My Tickets</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div className="transaction-modal">
-				<div className="modal-dialog" role="document">
-					<div className="modal-content">
-							<div className="modal-header">
-								<button type="button" className="close" data-dismiss="modal" aria-label="Close"><img src="/assets/images/icon-close.png"/></button>
-							</div>
-							<div className="modal-body">
-								<h4 className="text-uppercase" id="myModalLabel">your transaction / <span>confirmed tickets</span></h4>
-								<div className="transaction-list">
-									<ul className="list-unstyled clearfix">
-										<li>15</li>
-										<li>12</li>
-										<li>9</li>
-										<li>8</li>
-										<li>12</li>
-										<li>15</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					</div>
-				</div>
-				
-				<div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div className="transaction-modal tickets-modal">
-				<div className="modal-dialog modal-lg" role="document">
-					<div className="modal-content">
-							<div className="modal-header">
-								<button type="button" className="close" data-dismiss="modal" aria-label="Close"><img src="/assets/images/icon-close.png"/></button>
-							</div>
-							<div className="modal-body">
-							<div className="row">
-							<div className="col-sm-7">
-								<h4>{this.state.tokenLenghtArry} <span>tickets</span></h4>
-								<div className="transaction-list">
-								{/* <form>
-								<div className="input-group"> 
-								<label>Are your sure ?</label> 
-								<div className="input-group-btn"> 
-								<button type="button" className="btn btn-default" aria-label="Help">
-									
-								cancel
-								</button> 
-								<button type="button" className="btn btn-danger">Action</button> 
-								</div> 
-								</div>
-								</form> */}
-                                
-                                {_.map(this.state.tokenSelectedValue, (arr, i) => {
-                                    return (
-                                <div key={i}>
-                                    <ul className="list-unstyled clearfix">
-                                        <li>{this.state.tokenSelectedValue[i][0]}</li> 
-                                        <li>{this.state.tokenSelectedValue[i][1]}</li> 
-                                        <li>{this.state.tokenSelectedValue[i][2]}</li> 
-                                        <li>{this.state.tokenSelectedValue[i][3]}</li> 
-                                        <li>{this.state.tokenSelectedValue[i][4]}</li> 
-                                        <li>{this.state.tokenSelectedValue[i][5]}</li> 
-										<li className="close-times-white">
-                                        <a className="close-times-white" onClick={() => { this.removeToken(i); }}><img src="/assets/images/icon-close.png"/></a>
-                                        </li>
-                                    </ul>
-                                </div> 
-                                        );})} 
-									
-								</div>
-								</div>
-								<div className="col-sm-5">
-									<div className="modal-inner-tickets">
-			     						<h3 className="shadow-text">49.58</h3>
-			     						<p>Left to select</p>
-		                            </div>
-		                            <div className="modal-inner-tickets no-mar">
-		     							<h3>{this.state.ticketValue}<sup>ETH</sup></h3>
-		     							<p className="text-uppercase">(Balance: {this.state.etherbalance})</p>
-		     						</div>
-		     						<div className="modal-inner-tickets">
-		     							<a href="javascript:{}" title="buy now" className="btn btn-danger">Buy Now</a>
-		     						</div>
-								</div>
-							</div>
-							
-						</div>
-						</div>
-					</div>
-					</div>
-				</div>
-			</section>
+                                <div className="clearfix numbers-button">
+                                    <div className="pull-left res-pull-none">     
+                                        <a><input className="btn btn-primary button" type="button" onClick={this.tokenSelect} value="+" disabled={!(this.state.tokenValue.length === 6)} /></a>
+                                            <a href="javascript:{}" className="btn btn-primary ticket-added" title="Buy {this.state.tokenLenghtArry} Tickets" data-toggle="modal" data-target="#myModal2"> Buy  {this.state.tokenLenghtArry} Tickets</a>
+                                    </div>
+                                    <div className="pull-right res-pull-none">
+                                        <a href="javascript:{}" className="btn btn-primary buy-now" title="My Tickets" data-toggle="modal" data-target="#myModal1" onClick={this.displayConfirmedTokens}>My Tickets</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div className="transaction-modal">
+                                <div className="modal-dialog" role="document">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><img src="/assets/images/icon-close.png"/></button>
+                                        </div>
+                                        <div className="modal-body">
+                                            <h4 className="text-uppercase" id="myModalLabel">your transaction / <span>confirmed tickets</span></h4>
+                                            <div className="transaction-list">
+                                                <ul className="list-unstyled clearfix">
+                                                    <li>{this.state.confirmedTokenValues[0] ? this.state.confirmedTokenValues[0][0] : '' }</li>
+                                                    <li>12</li>
+                                                    <li>9</li>
+                                                    <li>8</li>
+                                                    <li>12</li>
+                                                    <li>15</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div className="transaction-modal tickets-modal">
+                                <div className="modal-dialog modal-lg" role="document">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><img src="/assets/images/icon-close.png"/></button>
+                                        </div>
+                                        <div className="modal-body">
+                                            <div className="row">
+                                                <div className="col-sm-7">
+                                                    <h4>{this.state.tokenLenghtArry} <span>tickets</span></h4>
+                                                    <div className="transaction-list">
+                                                    {/* <form>
+                                                    <div className="input-group"> 
+                                                    <label>Are your sure ?</label> 
+                                                    <div className="input-group-btn"> 
+                                                    <button type="button" className="btn btn-default" aria-label="Help">
+
+                                                    cancel
+                                                    </button> 
+                                                    <button type="button" className="btn btn-danger">Action</button> 
+                                                    </div> 
+                                                    </div>
+                                                    </form> */}
+
+                                                    {_.map(this.state.tokenSelectedValue, (arr, i) => {
+                                                        return (
+                                                            <div key={i}>
+                                                                <ul className="list-unstyled clearfix">
+                                                                    <li>{this.state.tokenSelectedValue[i][0]}</li> 
+                                                                    <li>{this.state.tokenSelectedValue[i][1]}</li> 
+                                                                    <li>{this.state.tokenSelectedValue[i][2]}</li> 
+                                                                    <li>{this.state.tokenSelectedValue[i][3]}</li> 
+                                                                    <li>{this.state.tokenSelectedValue[i][4]}</li> 
+                                                                    <li>{this.state.tokenSelectedValue[i][5]}</li> 
+                                                                    <li className="close-times-white">
+                                                                        <a className="close-times-white" onClick={() => { this.removeToken(i); }}><img src="/assets/images/icon-close.png"/></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        ); })
+                                                    }
+                                                    </div>
+                                                </div>
+                                                <div className="col-sm-5">
+                                                    <div className="modal-inner-tickets">
+                                                         <h3 className="shadow-text">49.58</h3>
+                                                         <p>Left to select</p>
+                                                    </div>
+                                                    <div className="modal-inner-tickets no-mar">
+                                                         <h3>{this.state.ticketValue}<sup>ETH</sup></h3>
+                                                         <p className="text-uppercase">(Balance: {this.state.etherbalance})</p>
+                                                     </div>
+                                                     <div className="modal-inner-tickets">
+                                                         <a href="javascript:{}" title="buy now" className="btn btn-danger" onClick={() => this.sendToken(this.state.tokenSelectedValue)}>Buy Now</a>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                                    
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </section>
 
                     <section className="number-list">
                         <div className="section-container">
@@ -324,6 +338,7 @@ function mapStateToProps(state) {
     return {
         userData: getUserData(state),
         ethereumBalance: getEtherData(state),
+        confirmedTokens: getConfirmedTokensData(state),
     };
 }
 
@@ -335,6 +350,9 @@ const mapDispatchToProps = (dispatch) => {
         setEthereumTokens: (data) => {
             dispatch(setTokenValues(data));
         },
+        getConfirmedTokens: (data) => {
+            dispatch(getConfirmedTokens(data));
+        },
     };
 };
 
@@ -343,7 +361,8 @@ MiniGameIndexPage.propTypes = {
     getEthereumBalance: PropTypes.func.isRequired,
     ethereumBalance: PropTypes.object.isRequired,
     setEthereumTokens: PropTypes.func.isRequired,
-
+    getConfirmedTokens: PropTypes.func.isRequired,
+    confirmedTokens: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MiniGameIndexPage);

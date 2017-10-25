@@ -150,3 +150,13 @@ exports.assignTokenToUser = (req, res, next) => {
             res.status(500).json(err);
         });
 };
+
+exports.getConfirmedTokens = (req, res, next) => {
+    userAPI.getConfirmedTokens(req)
+        .then(data => {
+            res.status(200).json(data);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
+};
