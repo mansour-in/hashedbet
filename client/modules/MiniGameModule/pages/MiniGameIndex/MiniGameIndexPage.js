@@ -14,11 +14,12 @@ export class MiniGameIndexPage extends Component {
             ethereumAddress: this.props.userData.ethereumAddress,
             etherEmail: this.props.userData.email,
             tokenDisplayArray: [],
+            tokenLenghtArry: [],
+            ticketValue: [],
         };
         this.addValue = this.addValue.bind(this);
         this.tokenSelect = this.tokenSelect.bind(this);
         this.resetToken = this.resetToken.bind(this);
- 
     // this.sendToken = this.sendToken.bind(this);
     }
 
@@ -40,12 +41,16 @@ export class MiniGameIndexPage extends Component {
             tokenSelectedValue: [...this.state.tokenSelectedValue, this.state.tokenValue],
             tokenValue: [],
             tokenDisplayArray: [],
+            tokenLenghtArry: [...this.state.tokenSelectedValue, this.state.tokenValue].length,
+            ticketValue: [['0.01'] * [...this.state.tokenSelectedValue, this.state.tokenValue].length],
         });
     }
 
     removeToken(temp) {
         this.setState({
             tokenSelectedValue: _.filter(this.state.tokenSelectedValue, o => this.state.tokenSelectedValue[temp] !== o),
+            tokenLenghtArry: _.filter(this.state.tokenSelectedValue, o => this.state.tokenSelectedValue[temp] !== o).length,
+            ticketValue: [['0.01'] * _.filter(this.state.tokenSelectedValue, o => this.state.tokenSelectedValue[temp] !== o).length],
         });
     }
 
@@ -94,7 +99,7 @@ export class MiniGameIndexPage extends Component {
                                 </button>
                                 <h1 className="h4 clearfix">
                                     <a href="/dashboard" title="Coinbet">
-                                        <img src="/assets/images/login.png" alt="[Image: CoinBet]" title="CoinBet" className="img-responsive logo" />
+                                    <img src="/assets/images/logo.png" alt="[Image: CoinBet]" title="CoinBet" className="img-responsive"/>
                                     </a>
                                 </h1>
                             </div>
@@ -135,8 +140,8 @@ export class MiniGameIndexPage extends Component {
                     <section className="ticket-value-blk">
                         <div className="section-container">
                             <div className="clearfix">
-                                <div className="pull-left">
-                                    <h3>6.25 <sup>ETH</sup></h3>
+                                <div className="pull-left res-pull-none">
+                                    <h3>{this.state.ticketValue} <sup>ETH</sup></h3>
                                     <p>ticket value</p>
                                 </div>
                                 <div className="circle-dashed">
@@ -145,7 +150,7 @@ export class MiniGameIndexPage extends Component {
                                         <p>left to select</p>
                                     </div>
                                 </div>
-                                <div className="pull-right">
+                                <div className="pull-right res-pull-none">
                                     <h3>5783 <sup>ETH</sup></h3>
                                     <p>total jackpot</p>
                                 </div>
@@ -168,7 +173,7 @@ export class MiniGameIndexPage extends Component {
                                     <div className={_.isInteger(this.state.tokenDisplayArray[5]) ? 'gold-bg' : 'astrick-bg'}><div className="inner-cell"><h3>{this.state.tokenDisplayArray ? this.state.tokenDisplayArray[5] : ''}</h3></div></div>
                                     {/* <div className="gold-bg"><div className="inner-cell"><h3>{this.state.tokenDisplayArray[1]}</h3></div></div> */}
                                 </div>
-                                <div className="clearfix numbers-button">
+                                {/* <div className="clearfix numbers-button">
                                     <div className="pull-left">
                                         <a><input className="btn btn-primary button" type="button" onClick={this.tokenSelect} value="+" disabled={!(this.state.tokenValue.length === 6)} /></a>
                                         <a href="#" className="btn btn-primary ticket-added">33 ticket added</a>
@@ -179,30 +184,133 @@ export class MiniGameIndexPage extends Component {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> */}
+                    <div className="clearfix numbers-button">
+							<div className="pull-left res-pull-none">     
+                                <a><input className="btn btn-primary button" type="button" onClick={this.tokenSelect} value="+" disabled={!(this.state.tokenValue.length === 6)} /></a>
+                                <a href="javascript:{}" className="btn btn-primary ticket-added" title="Buy {this.state.tokenLenghtArry} Tickets" data-toggle="modal" data-target="#myModal2"> Buy  {this.state.tokenLenghtArry} Tickets</a>
+							</div>
+							<div className="pull-right res-pull-none">
+								<a href="javascript:{}" className="btn btn-primary buy-now" title="My Tickets" data-toggle="modal" data-target="#myModal1">My Tickets</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div className="transaction-modal">
+				<div className="modal-dialog" role="document">
+					<div className="modal-content">
+							<div className="modal-header">
+								<button type="button" className="close" data-dismiss="modal" aria-label="Close"><img src="/assets/images/icon-close.png"/></button>
+							</div>
+							<div className="modal-body">
+								<h4 className="text-uppercase" id="myModalLabel">your transaction / <span>confirmed tickets</span></h4>
+								<div className="transaction-list">
+									<ul className="list-unstyled clearfix">
+										<li>15</li>
+										<li>12</li>
+										<li>9</li>
+										<li>8</li>
+										<li>12</li>
+										<li>15</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				
+				<div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div className="transaction-modal tickets-modal">
+				<div className="modal-dialog modal-lg" role="document">
+					<div className="modal-content">
+							<div className="modal-header">
+								<button type="button" className="close" data-dismiss="modal" aria-label="Close"><img src="/assets/images/icon-close.png"/></button>
+							</div>
+							<div className="modal-body">
+							<div className="row">
+							<div className="col-sm-7">
+								<h4>{this.state.tokenLenghtArry} <span>tickets</span></h4>
+								<div className="transaction-list">
+								{/* <form>
+								<div className="input-group"> 
+								<label>Are your sure ?</label> 
+								<div className="input-group-btn"> 
+								<button type="button" className="btn btn-default" aria-label="Help">
+									
+								cancel
+								</button> 
+								<button type="button" className="btn btn-danger">Action</button> 
+								</div> 
+								</div>
+								</form> */}
+                                
+                                {_.map(this.state.tokenSelectedValue, (arr, i) => {
+                                    return (
+                                <div key={i}>
+                                    <ul className="list-unstyled clearfix">
+                                        <li>{this.state.tokenSelectedValue[i][0]}</li> 
+                                        <li>{this.state.tokenSelectedValue[i][1]}</li> 
+                                        <li>{this.state.tokenSelectedValue[i][2]}</li> 
+                                        <li>{this.state.tokenSelectedValue[i][3]}</li> 
+                                        <li>{this.state.tokenSelectedValue[i][4]}</li> 
+                                        <li>{this.state.tokenSelectedValue[i][5]}</li> 
+										<li className="close-times-white">
+                                        <a className="close-times-white" onClick={() => { this.removeToken(i); }}><img src="/assets/images/icon-close.png"/></a>
+                                        </li>
+                                    </ul>
+                                </div> 
+                                        );})} 
+									
+								</div>
+								</div>
+								<div className="col-sm-5">
+									<div className="modal-inner-tickets">
+			     						<h3 className="shadow-text">49.58</h3>
+			     						<p>Left to select</p>
+		                            </div>
+		                            <div className="modal-inner-tickets no-mar">
+		     							<h3>{this.state.ticketValue}<sup>ETH</sup></h3>
+		     							<p className="text-uppercase">(Balance: {this.state.etherbalance})</p>
+		     						</div>
+		     						<div className="modal-inner-tickets">
+		     							<a href="javascript:{}" title="buy now" className="btn btn-danger">Buy Now</a>
+		     						</div>
+								</div>
+							</div>
+							
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</section>
+
                     <section className="number-list">
                         <div className="section-container">
                             <ul className="list-inline">
                             {_.range(0, 16).map((values, i) => {
                                 return <li key={i}> <a href="javascript:{}" title="" type="button" onClick={() => { this.addValue(values); }} value={values}>{values}</a></li>; })}
-                                <li><a href="#" title="" className="" onClick={this.resetToken}> <img src="/assets/images/recycle.png" /></a></li>
+                                <li><a href="javascript:{}" title="" className="" onClick={this.resetToken}> <img src="/assets/images/recycle.png" /></a></li>
                                 <li><a href="javascript:{}" title="" onClick={this.randomToken.bind(this)} className="">R</a></li>
                             </ul>
                         </div>
 
-                        <p>Selected Elements</p>
+                        {/* <p>Selected Elements</p>
                         <ul>
                             {_.map(this.state.tokenSelectedValue, (arr, i) => {
                                 return (
                                     <div key={i}>
-                                        <li>{arr}
-                                        &nbsp;
+                                        <li>
+                                        {arr}
+                                                                                &nbsp;
                                             <button onClick={() => { this.removeToken(i); }}>Remove</button>
                                         </li>
                                     </div>
                                 );
                             })}
-                        </ul>
+                        </ul> */}
                     </section>
                 </main>
 

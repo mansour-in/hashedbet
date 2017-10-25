@@ -34,8 +34,22 @@
 	font-style: normal;
 }
 body {
-	 background: url("../images/bg.png") no-repeat;
+	 background: url("../images/bg.png") no-repeat center center;
 	 font-family: "Conv_Verlag-Book", Helvetica, Arial, sans-serif;
+	 background-size: cover;
+}
+.no-mar {
+    margin: 0 !important;
+}
+.shadow-text {
+    text-shadow: -4px -4px 0px #a3005c
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+	color: #fff;
+    background-color: transparent;
+}
+.user-page-body {
+    background: url("../images/compress.png") top center no-repeat;
 }
 a:hover,a:focus{
 	text-decoration: none;
@@ -43,7 +57,7 @@ a:hover,a:focus{
 .ticket-value-blk {
 	font-family: 'Conv_Verlag-XLight';
 }
-.number-table,.numbers-button {
+.number-table,.numbers-button,.transaction-list {
 	font-family: 'Conv_Verlag-Bold';
 }
 header {
@@ -53,7 +67,10 @@ header {
 	background-color: transparent;
 	border-color: transparent;
 }
-.header-navbar h1,.header-navbar .list-inline {
+.header-navbar h1 {
+	margin-top: 13px;
+}
+.header-navbar .list-inline {
 	margin-top: 18px;
 }
 .header-navbar h1 img {
@@ -84,6 +101,7 @@ header {
 .header-navbar .dropdown-menu a {
 	color: #000;
 	font-size: 12px;
+	padding: 10px;
 }
 .user-circle {
 	display: inline-block;
@@ -180,7 +198,7 @@ header {
 	background: url(../images/astrick.png) no-repeat;
     height: 140px;
     margin-top: 7px;
-    width: 16.3%;
+    width: 16.3%; 
     position: relative;
     float: left;
     vertical-align: middle;
@@ -222,7 +240,7 @@ header {
 	position: relative;
     z-index: 9999;
 }
-.number-ticket .list-unstyled  li {
+.number-ticket > .list-unstyled > li {
 	float: left;
 	width: 15%;
 }
@@ -278,6 +296,276 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008bc6', end
     padding: 130px 0px 0px 0px;
     position: relative;
 }
+/* -- modal box css --*/
+.modal-open .modal {
+    background: rgba(0, 0, 0, 0.82);
+}
+.transaction-modal .modal-content{
+    background-color: transparent;
+    box-shadow: none;
+    border-color: transparent;
+}
+.modal-header {
+    border: 1px solid transparent;
+}
+.transaction-modal h4 {
+    text-transform: uppercase;
+    font-size: 23px;
+    color: #fff;
+    line-height: 1.4;
+	font-family: 'Conv_Verlag-XLight';
+    margin-bottom: 25px;
+    max-width: 287px;
+}
+.transaction-modal h4 span {
+	font-family: 'Conv_Verlag-Bold';
+    letter-spacing: 1px;
+ }
+ .transaction-modal .list-unstyled > li {
+	padding: 4px 13px 9px 12px;
+    background-color: #fff;
+    width: 55px;
+    margin: 0px 0px 5px 0px;
+    text-align: center;
+    font-family: 'Conv_Verlag-Black';
+    float: left;
+    color: #3b004c;
+    font-size: 30px;
+}
+.transaction-modal .list-unstyled > li:first-child{
+   border-radius: 3px 0px 0px 3px;
+}
+.transaction-modal .list-unstyled > li:last-child{
+    border-radius: 0px 3px 3px 0px;
+}
+.transaction-list {
+    max-width: 390px;
+    max-height: 426px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.transaction-list    label {
+	font-family: 'Conv_Verlag-Light';
+    display: block;
+    background-color: #ffffff;
+    height: 55px;
+    margin: 0;
+	color: #000;
+    padding: 14px 15px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    border-radius: 2px 0px 0px 2px;
+}
+.tickets-modal .list-unstyled > li {
+        background-color: #ffcf3e;
+}
+.tickets-modal  form {
+    margin: 0px 75px 15px 0px;
+}
+.tickets-modal .form-control {
+    font-family: 'Conv_Verlag-Book' !important;
+    font-size: 20px !important;
+}
+.tickets-modal .form-control,.tickets-modal .input-group .btn {
+    height: 55px;
+    border-radius: 0;
+    font-size: 14px;
+    font-family: 'Conv_Verlag-Black';
+}
+.tickets-modal .input-group .btn-default{
+    background-color: #dadada;
+}
+.tickets-modal .input-group .btn{
+    width: 110px;
+    text-transform: uppercase;
+}
+.tickets-modal .input-group .btn-danger,.modal-inner-tickets .btn-danger{
+    background-color: #f90021;
+	border-color: #f90021;
+	border-radius: 2px;
+}
+.tickets-modal h4 {
+    max-width: 100%;
+    font-family: 'Conv_Verlag-XLight';
+    font-size: 80px;
+    line-height: normal;
+    margin-bottom: 5px;
+}
+.tickets-modal h4 span {
+    font-size: 18px;
+    color: #9d9ca1;
+}
+.tickets-modal .transaction-list {
+    max-width: 480px;
+} 
+.close-times-white {
+    background-color: #fff !important;
+}
+.modal-inner-tickets {
+    color: #fff;
+    padding-left: 25px;
+    margin-bottom: 80px;
+    font-family: 'Conv_Verlag-XLight';
+} 
+.modal-inner-tickets h3 {
+    font-size: 64pt;
+    line-height: 58px;
+} 
+.modal-inner-tickets p {
+    font-size: 18px;
+    color: #9d9ca1;
+}
+.modal-inner-tickets sup{
+    font-size: 14px;
+    top: -40px;
+}
+.modal-inner-tickets .btn-danger {
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 0px;
+    border-radius: 2px;
+    font-family: 'Conv_Verlag-Bold';
+    font-weight: 600;
+    line-height: 39px;
+    text-transform: uppercase;
+    padding: 10px 28px 6px 28px;   
+ } 
+ .box-1 {
+    position: absolute;
+    top: -20px;
+    left: -40px;
+ } 
+ .box-2 {
+    position: absolute;
+    top: -40px;
+    right: -71px;
+} 
+.user-page-body .box-img {
+    position: relative;
+    height: 400px;
+}
+.congart-box h3 {
+    color: #fff;
+    text-transform: uppercase;
+    margin: 80px 0px 30px 0px;
+    font-family: 'Conv_Verlag-Bold';
+    font-size: 44px;
+    font-weight: bold;
+    text-shadow: -6px 5px 8px #151414;
+}
+.congart-box h3 span {
+    font-family: 'Conv_Verlag-XLight';
+    text-shadow: none;
+ }   
+.amount-user .panel{
+    min-height: 125px;
+    border-radius: 0;
+    padding: 10px;
+    max-width: 700px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    margin: auto;
+    background-color: #000;
+    background: rgba(248,80,50,1);
+background: -moz-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(248,80,50,0.98) 10%, rgba(241,111,92,0.96) 22%, rgba(246,41,12,0.92) 45%, rgba(240,47,23,0.87) 79%, rgba(255,133,84,0.84) 95%, rgba(255,133,84,0.83) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248,80,50,1)), color-stop(10%, rgba(248,80,50,0.98)), color-stop(22%, rgba(241,111,92,0.96)), color-stop(45%, rgba(246,41,12,0.92)), color-stop(79%, rgba(240,47,23,0.87)), color-stop(95%, rgba(255,133,84,0.84)), color-stop(100%, rgba(255,133,84,0.83)));
+background: -webkit-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(248,80,50,0.98) 10%, rgba(241,111,92,0.96) 22%, rgba(246,41,12,0.92) 45%, rgba(240,47,23,0.87) 79%, rgba(255,133,84,0.84) 95%, rgba(255,133,84,0.83) 100%);
+background: -o-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(248,80,50,0.98) 10%, rgba(241,111,92,0.96) 22%, rgba(246,41,12,0.92) 45%, rgba(240,47,23,0.87) 79%, rgba(255,133,84,0.84) 95%, rgba(255,133,84,0.83) 100%);
+background: -ms-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(248,80,50,0.98) 10%, rgba(241,111,92,0.96) 22%, rgba(246,41,12,0.92) 45%, rgba(240,47,23,0.87) 79%, rgba(255,133,84,0.84) 95%, rgba(255,133,84,0.83) 100%);
+background: linear-gradient(to bottom, rgba(248,80,50,1) 0%, rgba(248,80,50,0.98) 10%, rgba(241,111,92,0.96) 22%, rgba(246,41,12,0.92) 45%, rgba(240,47,23,0.87) 79%, rgba(255,133,84,0.84) 95%, rgba(255,133,84,0.83) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#ff8554', GradientType=0 );
+}
+.amount-user .list-unstyled > li {
+    float: left;
+    padding: 0px 15px;
+    width: 25%;
+}
+.amount-user h3 {
+    font-size: 50px;
+    text-transform: uppercase;
+    line-height: 39px;
+    font-family: 'Conv_Verlag-Bold'
+}
+.amount-user sup {
+    font-size: 14px;
+    top: -34px;
+    left: -12px;
+    font-family: 'Conv_Verlag-Light';
+}
+.amount-user p {
+    font-size: 14px;
+    text-transform: capitalize;
+ } 
+ .start-game {
+    min-height: 140px;
+    padding: 30px;
+    margin: 50px 0px 30px 0px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.44);
+    border-radius: 3px;
+ }
+ .start-game h3 {
+    line-height: 40px;
+    font-size: 80px;
+    font-family: 'Conv_Verlag-XLight';
+    text-shadow: -4px -4px 0px #a3005c;
+    text-transform: capitalize;
+ }
+ .start-game p {
+     font-size: 16px;
+ }
+.start-game .btn-danger {
+    margin-top: 25px;
+     font-family: 'Conv_Verlag-Black';
+    padding: 17px 30px;
+    font-size: 15px;
+    text-transform: uppercase;
+    background: rgba(248,80,50,1);
+background: -moz-linear-gradient(top, rgba(248,80,50,1) 3%, rgba(248,80,50,0.99) 10%, rgba(246,41,12,0.95) 50%, rgba(198,0,17,0.92) 81%, rgba(198,0,17,0.9) 97%, rgba(255,133,84,0.9) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(3%, rgba(248,80,50,1)), color-stop(10%, rgba(248,80,50,0.99)), color-stop(50%, rgba(246,41,12,0.95)), color-stop(81%, rgba(198,0,17,0.92)), color-stop(97%, rgba(198,0,17,0.9)), color-stop(100%, rgba(255,133,84,0.9)));
+background: -webkit-linear-gradient(top, rgba(248,80,50,1) 3%, rgba(248,80,50,0.99) 10%, rgba(246,41,12,0.95) 50%, rgba(198,0,17,0.92) 81%, rgba(198,0,17,0.9) 97%, rgba(255,133,84,0.9) 100%);
+background: -o-linear-gradient(top, rgba(248,80,50,1) 3%, rgba(248,80,50,0.99) 10%, rgba(246,41,12,0.95) 50%, rgba(198,0,17,0.92) 81%, rgba(198,0,17,0.9) 97%, rgba(255,133,84,0.9) 100%);
+background: -ms-linear-gradient(top, rgba(248,80,50,1) 3%, rgba(248,80,50,0.99) 10%, rgba(246,41,12,0.95) 50%, rgba(198,0,17,0.92) 81%, rgba(198,0,17,0.9) 97%, rgba(255,133,84,0.9) 100%);
+background: linear-gradient(to bottom, rgba(248,80,50,1) 3%, rgba(248,80,50,0.99) 10%, rgba(246,41,12,0.95) 50%, rgba(198,0,17,0.92) 81%, rgba(198,0,17,0.9) 97%, rgba(255,133,84,0.9) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#ff8554', GradientType=0 );
+} 
+.num-x .list-unstyled > li{
+    float: left;
+    width: 33.33%;
+    font-size: 18px;
+    font-size: 30px;
+    padding: 0px 15px;
+    color: #fff;
+    margin: 3px 0px;
+}
+.num-x .list-unstyled  a {
+    color: #fff;
+}
+.num-x .list-unstyled {
+    max-width: 690px;
+    margin: auto;
+}   
+ .transaction-modal .close,.tickets-modal  .close {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    font-size: 50px;
+    color: #fff;
+    top: 0;
+    opacity: 1;
+    outline: none;
+ }
+.active-model .transaction-list {
+	max-width: 100%;
+}
+.active-green-list {
+	  background: url(../images/compress.png) repeat center;
+	  	position: relative;
+}
+.active-green-list li {
+	background-color: #008001 !important;
+    color: #fff !important;
+}
 @media screen and (max-width: 767px) {
 	.number-ticket {
 		padding: 0px 10px;
@@ -287,18 +575,66 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008bc6', end
 	}
 	.box-img {
 		padding: 0;
+		height: 100%;
 	}
 	.number-table {
 		padding: 20px 15px 20px 15px;
 	}
 	.ticket-value-blk {
-		 padding: 75px 15px 0px 15px;
+		 padding: 15px 15px 0px 15px;
 	}
 	.ticket-value-blk h3 {
 		font-size: 55px;
 	}
-}
-
-img.img-responsive.logo {
-    height: 49px;
+	.res-pull-none {
+		float: none !important;
+	}
+	.circle-dashed {
+		background: none;
+		position: static;
+		height: 100%;
+	}
+	.ticket-value-blk,.circle-dashed,.dashed-inner,.numbers-button {
+		text-align: center;
+	}
+	.ticket-value-blk  sup {
+		top:0;
+		left:0;
+	}
+	.ticket-value-blk p {
+		margin: 10px 0px 30px 0px;
+	}
+	.dashed-inner {
+		max-width: 100%;
+		padding: 0;
+	}
+	.navbar-header {
+		padding: 0px 10px;
+	}
+	.header-navbar h1 {
+		margin: 5px 0px;
+	}
+	.navbar-default .navbar-collapse {
+		border-color: transparent;
+		background: transparent;
+		text-align: center;
+	}
+	.navbar-default .navbar-toggle {
+		border-color: #fff;
+		border-radius: 0;
+		margin: 8px 0px;
+		background-color: rgba(221, 221, 221, 0.15);
+	}
+	.inner-cell h3 {
+		display: block;
+	}
+	.number-table {
+		padding: 10px;
+	}
+	.numbers-button .btn {
+		margin: 10px 0px;
+	}
+	.numbers-button {
+		max-width: 100%;
+	}
 }

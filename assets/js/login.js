@@ -10,9 +10,9 @@
    
    $(function() {
     
-    var $formLogin = $('#login-form');
+    var $formLogin = $('#loginForm');
     var $formLost = $('#lost-form');
-    var $formRegister = $('#register-form');
+    var $formRegister = $('#signUpForm');
     var $divForms = $('#div-forms');
     var $modalAnimateTime = 300;
     var $msgAnimateTime = 150;
@@ -20,7 +20,7 @@
 
     $("form").submit(function () {
         switch(this.id) {
-            case "login-form":
+            case "loginForm":
                 var $lg_username=$('#login_username').val();
                 var $lg_password=$('#login_password').val();
                 if ($lg_username == "ERROR") {
@@ -39,7 +39,7 @@
                 }
                 return false;
                 break;
-            case "register-form":
+            case "signUpForm":
                 var $rg_username=$('#register_username').val();
                 var $rg_email=$('#register_email').val();
                 var $rg_password=$('#register_password').val();
