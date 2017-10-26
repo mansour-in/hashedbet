@@ -18,7 +18,7 @@
     "build-stage": "cross-env NODE_ENV=production CONFIG_ENV=staging webpack --config webpack.config.prod.js",
     "build:server-stage": "cross-env NODE_ENV=production CONFIG_ENV=staging webpack --config webpack.config.server.js",
     "clean": "rimraf dist",
-    "slate": "rimraf node_modules && npm install",
+    "slate": "rimraf node_modules && npm install --exact",
     "lint": "eslint client"
   },
   "pre-commit": [
